@@ -56,7 +56,7 @@ const EventsScreen = () => {
           <Text style={styles.navBtn}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.monthText}>
-          {today.toLocaleString('default', { month: 'long' })} {year}
+          {new Date(year, month).toLocaleString('default', { month: 'long' })} {year}
         </Text>
         <TouchableOpacity onPress={handleNextMonth}>
           <Text style={styles.navBtn}>{'>'}</Text>
