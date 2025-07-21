@@ -85,7 +85,7 @@ const EventsScreen = () => {
           // Add header row as part of the grid
           for (let col = 0; col < 7; col++) {
             grid.push(
-              <View key={`header-${col}`} style={styles.dayCell}>
+              <View key={`header-${col}`} style={[styles.dayCell, styles.headerCellBg]}>
                 <Text style={styles.headerText}>{daysOfWeek[col]}</Text>
               </View>
             );
@@ -158,6 +158,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 16,
+  },
+  headerCellBg: {
+    backgroundColor: 'transparent',
   },
   headerText: {
     color: '#4B2473',
