@@ -1,5 +1,5 @@
 // app/index.tsx
-import BottomTabNavigator from '../src/components/Navigation/BottomTabNavigator';
+import BottomTabNavigator from './BottomTabNavigator';
 
 export default function Page() {
   return <BottomTabNavigator />;
