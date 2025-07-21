@@ -75,19 +75,50 @@ const EventsScreen = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.calendarGrid}>
-        {[...Array(daysInMonth)].map((_, i) => {
-          const day = i + 1;
-          const event = eventMap[day];
-          return (
-            <TouchableOpacity
-              key={day}
-              style={[styles.dayCell, event && styles.eventDay]}
-              onPress={() => event && setSelectedEvent(event as { date: string; title: string; description: string })}
-            >
-              <Text style={styles.dayText}>{day}</Text>
-            </TouchableOpacity>
-          );
-        })}
+        {(() => {
+          const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0 = Sunday
+          const grid = [];
+          let currentDay = 1;
+          const totalRows = Math.ceil((firstDayOfMonth + daysInMonth) / 7);
+
+          // Add header row as part of the grid
+          for (let col = 0; col < 7; col++) {
+            grid.push(
+              <View key={`header-${col}`} style={styles.dayCell}>
+                <Text style={styles.headerText}>{daysOfWeek[col]}</Text>
+              </View>
+            );
+          }
+
+          for (let row = 0; row < totalRows; row++) {
+            for (let col = 0; col < 7; col++) {
+              const cellIndex = row * 7 + col;
+              if (row === 0 && col < firstDayOfMonth) {
+                grid.push(
+                  <View key={`empty-${cellIndex}`} style={styles.dayCell} />
+                );
+              } else if (currentDay <= daysInMonth) {
+                const event = eventMap[currentDay];
+                grid.push(
+                  <TouchableOpacity
+                    key={currentDay}
+                    style={[styles.dayCell, event && styles.eventDay]}
+                    onPress={() => event && setSelectedEvent(event as { date: string; title: string; description: string })}
+                  >
+                    <Text style={styles.dayText}>{currentDay}</Text>
+                  </TouchableOpacity>
+                );
+                currentDay++;
+              } else {
+                grid.push(
+                  <View key={`empty-${cellIndex}`} style={styles.dayCell} />
+                );
+              }
+            }
+          }
+          return grid;
+        })()}
       </View>
       <View style={styles.eventsBlock}>
         <Text style={styles.eventsTitle}>Events This Month</Text>
@@ -128,6 +159,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 16,
   },
+  headerText: {
+    color: '#4B2473',
+    fontWeight: 'bold',
+    fontSize: 14,
+    textAlign: 'center',
+    width: '100%',
+  },
   title: {
     color: '#4B2473',
     fontSize: 24,
@@ -157,9 +195,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dayCell: {
-    width: 44,
-    height: 44,
-    margin: 4,
+    width: 43,
+    height: 43,
+    margin: 3,
     backgroundColor: '#E6D6F7',
     borderRadius: 8,
     justifyContent: 'center',
