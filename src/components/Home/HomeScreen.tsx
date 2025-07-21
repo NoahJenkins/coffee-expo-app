@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 const MAP_URL =
-  'https://www.google.com/maps?q=4005+Golden+Triangle+Blvd,+Fort+Worth,+TX+76244&output=embed';
+  'https://maps.apple.com/?address=4005%20Golden%20Triangle%20Blvd,%20Fort%20Worth,%20TX%2076244&ll=32.9346,-97.2911&q=Axiom%20Coffee';
 
 const HomeScreen = () => (
   <View style={styles.container}>
@@ -30,6 +30,7 @@ const HomeScreen = () => (
         style={styles.map}
         javaScriptEnabled
         scrollEnabled={false}
+        allowsInlineMediaPlayback
       />
     </View>
   </View>
