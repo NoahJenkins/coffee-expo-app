@@ -1,6 +1,6 @@
 // EventsScreen.tsx
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, ScrollView, SafeAreaView } from 'react-native';
 
 const events = [
   { date: '2025-01-01', title: "New Year's Day Brunch", description: 'Celebrate the new year with special brunch offerings.' }, // Wednesday
@@ -61,95 +61,99 @@ const EventsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Events</Text>
-      <View style={styles.monthNav}>
-        <TouchableOpacity onPress={handlePrevMonth}>
-          <Text style={styles.navBtn}>{'<'}</Text>
-        </TouchableOpacity>
-        <Text style={styles.monthText}>
-          {new Date(year, month).toLocaleString('default', { month: 'long' })} {year}
-        </Text>
-        <TouchableOpacity onPress={handleNextMonth}>
-          <Text style={styles.navBtn}>{'>'}</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.calendarGrid}>
-        {(() => {
-          const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-          const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0 = Sunday
-          const grid = [];
-          let currentDay = 1;
-          const totalRows = Math.ceil((firstDayOfMonth + daysInMonth) / 7);
-
-          // Add header row as part of the grid
-          for (let col = 0; col < 7; col++) {
-            grid.push(
-              <View key={`header-${col}`} style={[styles.dayCell, styles.headerCellBg]}>
-                <Text style={styles.headerText}>{daysOfWeek[col]}</Text>
-              </View>
-            );
-          }
-
-          for (let row = 0; row < totalRows; row++) {
-            for (let col = 0; col < 7; col++) {
-              const cellIndex = row * 7 + col;
-              if (row === 0 && col < firstDayOfMonth) {
-                grid.push(
-                  <View key={`empty-${cellIndex}`} style={styles.dayCell} />
-                );
-              } else if (currentDay <= daysInMonth) {
-                const event = eventMap[currentDay];
-                grid.push(
-                  <TouchableOpacity
-                    key={currentDay}
-                    style={[styles.dayCell, event && styles.eventDay]}
-                    onPress={() => event && setSelectedEvent(event as { date: string; title: string; description: string })}
-                  >
-                    <Text style={styles.dayText}>{currentDay}</Text>
-                  </TouchableOpacity>
-                );
-                currentDay++;
-              } else {
-                grid.push(
-                  <View key={`empty-${cellIndex}`} style={styles.dayCell} />
-                );
-              }
-            }
-          }
-          return grid;
-        })()}
-      </View>
-      <View style={styles.eventsBlock}>
-        <Text style={styles.eventsTitle}>Events This Month</Text>
-        {Object.values(eventMap).length === 0 ? (
-          <Text style={styles.noEvents}>No events scheduled.</Text>
-        ) : (
-          Object.values(eventMap).map((event, idx) => (
-            <View key={idx} style={styles.eventCard}>
-              <Text style={styles.eventDayText}>
-                {new Date(event.date).getDate()}
-              </Text>
-              <View style={styles.eventDetails}>
-                <Text style={styles.eventTitle}>{event.title}</Text>
-                <Text style={styles.eventDesc}>{event.description}</Text>
-              </View>
-            </View>
-          ))
-        )}
-      </View>
-      <Modal visible={!!selectedEvent} transparent animationType="slide">
-        <View style={styles.modalBg}>
-          <View style={styles.modalCard}>
-            <Text style={styles.modalTitle}>{selectedEvent?.title ?? ''}</Text>
-            <Text style={styles.modalDesc}>{selectedEvent?.description ?? ''}</Text>
-            <TouchableOpacity onPress={() => setSelectedEvent(null)}>
-              <Text style={styles.closeBtn}>Close</Text>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Events</Text>
+          <View style={styles.monthNav}>
+            <TouchableOpacity onPress={handlePrevMonth}>
+              <Text style={styles.navBtn}>{'<'}</Text>
+            </TouchableOpacity>
+            <Text style={styles.monthText}>
+              {new Date(year, month).toLocaleString('default', { month: 'long' })} {year}
+            </Text>
+            <TouchableOpacity onPress={handleNextMonth}>
+              <Text style={styles.navBtn}>{'>'}</Text>
             </TouchableOpacity>
           </View>
+          <View style={styles.calendarGrid}>
+            {(() => {
+              const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+              const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0 = Sunday
+              const grid = [];
+              let currentDay = 1;
+              const totalRows = Math.ceil((firstDayOfMonth + daysInMonth) / 7);
+
+              // Add header row as part of the grid
+              for (let col = 0; col < 7; col++) {
+                grid.push(
+                  <View key={`header-${col}`} style={[styles.dayCell, styles.headerCellBg]}>
+                    <Text style={styles.headerText}>{daysOfWeek[col]}</Text>
+                  </View>
+                );
+              }
+
+              for (let row = 0; row < totalRows; row++) {
+                for (let col = 0; col < 7; col++) {
+                  const cellIndex = row * 7 + col;
+                  if (row === 0 && col < firstDayOfMonth) {
+                    grid.push(
+                      <View key={`empty-${cellIndex}`} style={styles.dayCell} />
+                    );
+                  } else if (currentDay <= daysInMonth) {
+                    const event = eventMap[currentDay];
+                    grid.push(
+                      <TouchableOpacity
+                        key={currentDay}
+                        style={[styles.dayCell, event && styles.eventDay]}
+                        onPress={() => event && setSelectedEvent(event as { date: string; title: string; description: string })}
+                      >
+                        <Text style={styles.dayText}>{currentDay}</Text>
+                      </TouchableOpacity>
+                    );
+                    currentDay++;
+                  } else {
+                    grid.push(
+                      <View key={`empty-${cellIndex}`} style={styles.dayCell} />
+                    );
+                  }
+                }
+              }
+              return grid;
+            })()}
+          </View>
+          <View style={styles.eventsBlock}>
+            <Text style={styles.eventsTitle}>Events This Month</Text>
+            {Object.values(eventMap).length === 0 ? (
+              <Text style={styles.noEvents}>No events scheduled.</Text>
+            ) : (
+              Object.values(eventMap).map((event, idx) => (
+                <View key={idx} style={styles.eventCard}>
+                  <Text style={styles.eventDayText}>
+                    {new Date(event.date).getDate()}
+                  </Text>
+                  <View style={styles.eventDetails}>
+                    <Text style={styles.eventTitle}>{event.title}</Text>
+                    <Text style={styles.eventDesc}>{event.description}</Text>
+                  </View>
+                </View>
+              ))
+            )}
+          </View>
+          <Modal visible={!!selectedEvent} transparent animationType="slide">
+            <View style={styles.modalBg}>
+              <View style={styles.modalCard}>
+                <Text style={styles.modalTitle}>{selectedEvent?.title ?? ''}</Text>
+                <Text style={styles.modalDesc}>{selectedEvent?.description ?? ''}</Text>
+                <TouchableOpacity onPress={() => setSelectedEvent(null)}>
+                  <Text style={styles.closeBtn}>Close</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
