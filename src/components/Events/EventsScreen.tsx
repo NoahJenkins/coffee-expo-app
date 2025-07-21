@@ -3,9 +3,21 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 
 const events = [
-  { date: '2025-07-10', title: 'Live Music', description: 'Enjoy local artists from 6-8 PM.' },
-  { date: '2025-07-15', title: 'Latte Art Class', description: 'Learn latte art at 2 PM.' },
-  { date: '2025-07-22', title: 'Community Meetup', description: 'Meet neighbors at 5 PM.' },
+  { date: '2025-01-01', title: "New Year's Day Brunch", description: 'Celebrate the new year with special brunch offerings.' }, // Wednesday
+  { date: '2025-02-14', title: "Valentine's Coffee Date", description: 'Share a sweet treat and coffee with someone special.' }, // Friday
+  { date: '2025-03-17', title: "St. Patrick's Day Green Latte", description: 'Try our festive green matcha latte.' }, // Monday
+  { date: '2025-04-11', title: 'Spring Art Market', description: 'Local artists showcase their work.' }, // Friday
+  { date: '2025-05-05', title: 'Cinco de Mayo Fiesta', description: 'Enjoy Mexican pastries and themed drinks.' }, // Monday
+  { date: '2025-06-20', title: 'Summer Solstice Celebration', description: 'Live music and cold brew specials.' }, // Friday
+  { date: '2025-07-04', title: 'Independence Day BBQ', description: 'Outdoor BBQ and iced coffee bar.' }, // Friday
+  { date: '2025-07-10', title: 'Live Music', description: 'Enjoy local artists from 6-8 PM.' }, // Thursday
+  { date: '2025-07-15', title: 'Latte Art Class', description: 'Learn latte art at 2 PM.' }, // Tuesday
+  { date: '2025-07-22', title: 'Community Meetup', description: 'Meet neighbors at 5 PM.' }, // Tuesday
+  { date: '2025-09-02', title: 'Labor Day Study Jam', description: 'Quiet study space and free refills.' }, // Tuesday (Labor Day is Monday, so event is Tuesday)
+  { date: '2025-10-31', title: 'Halloween Costume Contest', description: 'Dress up and win prizes.' }, // Friday
+  { date: '2025-11-26', title: 'Thanksgiving Pie Tasting', description: 'Sample seasonal pies and coffee.' }, // Wednesday (Thanksgiving is Thursday, so event is Wednesday)
+  { date: '2025-12-24', title: 'Christmas Eve Cocoa', description: 'Hot chocolate bar and holiday treats.' }, // Wednesday
+  { date: '2025-12-31', title: "New Year's Eve Toast", description: 'Ring in the new year with friends and coffee.' }, // Wednesday
 ];
 
 const getDaysInMonth = (year: number, month: number) => new Date(year, month + 1, 0).getDate();
