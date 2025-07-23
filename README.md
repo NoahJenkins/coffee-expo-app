@@ -25,6 +25,35 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Project Structure
+
+```
+app/
+  layout.tsx
+  index.tsx
+  tabs/
+    HomeScreen.tsx
+    MenuScreen.tsx
+    MenuScreen.tsx
+  BottomTabNavigator.tsx
+
+components/
+  Events/
+    EventsScreen.tsx
+  ui/
+    Collapsible.tsx
+    ExternalLink.tsx
+    HapticTab.tsx
+    HelloWave.tsx
+    IconSymbol.ios.tsx
+    IconSymbol.tsx
+    ParallaxScrollView.tsx
+    TabBarBackground.ios.tsx
+    TabBarBackground.tsx
+    ThemedText.tsx
+    ThemedView.tsx
+```
+
 ## Get a fresh project
 
 When you're ready, run:

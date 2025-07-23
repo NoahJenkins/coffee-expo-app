@@ -1,8 +1,8 @@
 // BottomTabNavigator.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from './HomeScreen';
-import MenuScreen from './MenuScreen';
+import HomeScreen from './tabs/HomeScreen';
+import MenuScreen from './tabs/MenuScreen';
 import EventsScreen from '../components/Events/EventsScreen';
 import { Ionicons } from '@expo/vector-icons';
 
