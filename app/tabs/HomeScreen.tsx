@@ -4,17 +4,17 @@ import { WebView } from 'react-native-webview';
 import { Building, Coffee, Heart } from 'lucide-react-native';
 
 const MAP_URL =
-  'https://maps.apple.com/?address=4005%20Golden%20Triangle%20Blvd,%20Fort%20Worth,%20TX%2076244&ll=32.9346,-97.2911&q=Axiom%20Coffee';
+  'https://maps.apple.com/?address=4005%20Golden%20Triangle%20Blvd,%20Fort%20Worth,%20TX%2076244&ll=32.9346,-97.2911&q=Native%20Coffee';
 
 const HomeScreen = () => (
   <SafeAreaView style={styles.safeArea}>
     <ScrollView contentContainerStyle={styles.scrollContent}>
       <View style={styles.container}>
-        <Text style={styles.title}>Axiom Coffee</Text>
+        <Text style={styles.title}>Native Coffee</Text>
         <Text style={styles.tagline}>CONNECTING TO THE COMMUNITY</Text>
         <View style={styles.card}>
           <Text style={styles.mission}>
-            Axiom meaning a statement or proposition that is regarded as being established, accepted, or self-evidently true. Axiom Coffee has been talked about and worked on for four years. Axiom exists to serve the best coffee in an environment that develops community.
+            Native is defined as a place or environment in which a person was born or a thing came into being. We believe that coffee is tied to our roots, and we want to bring that to our community.
           </Text>
         </View>
         <View style={styles.versatileBlock}>

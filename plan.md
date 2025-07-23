@@ -1,6 +1,6 @@
-# Axiom Coffee App – UI/UX Design Plan
+# Native Coffee App – UI/UX Design Plan
 
-This document outlines the design plan for a demo mobile app for Axiom Coffee, a local coffee shop. The app features three main screens: Home, Menu, and Events. All data is hardcoded for demonstration purposes.
+This document outlines the design plan for a demo mobile app for Native Coffee, a local coffee shop. The app features three main screens: Home, Menu, and Events. All data is hardcoded for demonstration purposes.
 
 ---
 
@@ -20,11 +20,11 @@ This document outlines the design plan for a demo mobile app for Axiom Coffee, a
 ## 1. Home Screen
 
 **Header:**  
-- Name: **Axiom Coffee**
+- Name: **Native Coffee**
 - Tagline: *CONNECTING TO THE COMMUNITY*
 
 **Mission Statement:**  
-Axiom means a statement or proposition that is regarded as being established, accepted, or self-evidently true. Axiom Coffee has been talked about and worked on for four years. Axiom exists to serve the best coffee in an environment that develops community.
+Native is defined as a place or environment in which a person was born or a thing came into being. We believe that coffee is tied to our roots, and we want to bring that to our community.
 
 **Details:**  
 - **Hours:** Monday - Saturday: 8:00 AM – 6:00 PM, Sunday Closed
@@ -116,4 +116,4 @@ Axiom means a statement or proposition that is regarded as being established, ac
 
 ## Elevator Pitch
 
-Axiom Coffee’s app connects the community, showcases the menu, and keeps customers informed about events—all in a clean, modern, and welcoming interface.
+Native Coffee’s app connects the community, showcases the menu, and keeps customers informed about events—all in a clean, modern, and welcoming interface.
