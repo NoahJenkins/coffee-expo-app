@@ -14,7 +14,7 @@ const BottomTabNavigator = () => (
       headerShown: false,
       tabBarActiveTintColor: '#4B2473',
       tabBarInactiveTintColor: '#E6D6F7',
-      tabBarStyle: { backgroundColor: '#fff', borderTopColor: '#E6D6F7' },
+      tabBarStyle: { backgroundColor: '#fff', borderTopColor: '#E6D6F7', height: 60 },
       tabBarIcon: ({ color, size }) => {
         let iconName: keyof typeof Ionicons.glyphMap = 'home';
         if (route.name === 'Home') iconName = 'home';
