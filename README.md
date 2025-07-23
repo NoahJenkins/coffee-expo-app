@@ -1,5 +1,7 @@
 # Coffee Expo App
 
+**Disclaimer:** "Native Coffee" is a fictional establishment created as a playful reference to React Native. This app is not associated with any real business or location.
+
 A mobile application built with [Expo](https://expo.dev) and React Native to showcase coffee expo events, menus, and interactive features. The app provides a modern, tab-based navigation experience and leverages Expo's file-based routing for scalable development.
 
 ## Features
